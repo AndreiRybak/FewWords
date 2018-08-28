@@ -24,3 +24,4 @@ final class User: Codable {
 extension User: PostgreSQLUUIDModel {}
 extension User: Content {}
 extension User: Migration {}
+extension User: Parameter {}
