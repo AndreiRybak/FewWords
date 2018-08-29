@@ -19,15 +19,36 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
 
     // Configure a FluentPostgreSQL database
     var databases = DatabasesConfig()
+
     let hostname = Environment.get("DATABASE_HOSTNAME") ?? "localhost"
     let username = Environment.get("DATABASE_USER") ?? "admin"
-    let databaseName = Environment.get("DATABASE_DB") ?? "FewWords"
+
+    let databaseName: String
+    let databasePort: Int
+
+    if env == .testing {
+        databaseName = "FewWords-Test"
+        if let testPort = Environment.get("DATABASE_PORT") {
+            databasePort = Int(testPort) ?? 5433
+        } else {
+            databasePort = 5433
+        }
+    }
+    else {
+        databaseName = Environment.get("DATABASE_DB") ?? "FewWords"
+        databasePort = 5432
+    }
+
     let password = Environment.get("DATABASE_PASSWORD") ?? "password"
+
     let databaseConfig = PostgreSQLDatabaseConfig(
         hostname: hostname,
+        port: databasePort,
         username: username,
         database: databaseName,
-        password: password)
+        password: password
+    )
+
     let database = PostgreSQLDatabase(config: databaseConfig)
     databases.add(database: database, as: .psql)
     services.register(databases)
@@ -37,4 +58,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     migrations.add(model: User.self, database: .psql)
     services.register(migrations)
 
+    var commandConfig = CommandConfig.default()
+    commandConfig.useFluentCommands()
+    services.register(commandConfig)
 }
