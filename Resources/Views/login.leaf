@@ -1,0 +1,89 @@
+
+#set("stylesheets") {
+	<link rel="stylesheet" type="text/css" href="styles/login.css">
+  <script src="/scripts/login.js"></script>
+}
+
+#set("content") {
+	<div class="logo-header">
+    <img class="logo-header__image" src="Images/logo.png">
+  </div>
+
+  <div class="error">
+    <div class="error__message">Incorrect username or password.</div>
+      <button type="button" class="close error__close" aria-label="Close">
+        <span class="error__close-icon" aria-hidden="true">&times;</span>
+      </button>
+  </div>
+
+  <div class="auth-tabs">
+    <button type="button" class=" btn btn-light btn-lg auth-tabs__login" onclick="loginTabClicked()">Log In</button>
+    <button type="button" class="btn btn-light btn-lg auth-tabs__signup" onclick="signupTabClicked()">Sign Up</button>
+  </div>
+
+  <!-- Login form -->
+
+  <form class="auth-form" id="login-tab">
+    <div class="form-group email-form auth-form__field auth-form__username">
+      <input type="email" class="form-control auth-form__input auth-form__username-input" aria-describedby="emailHelp" placeholder="Username or email">
+    </div>
+
+    <div class="form-group password-form auth-form__field auth-form__username">
+      <input type="password" class="form-control auth-form__input auth-form__password-input" placeholder="Password">
+    </div>
+
+    <div class="form-check auth-form__remember-me">
+      <input type="checkbox" class="form-check-input auth-form__remember-me-checkbox" id="rememberMeChecker">
+      <label class="form-check-label auth-form__remember-me-label" for="rememberMeChecker">Remember me</label>
+    </div>
+    <div class="auth-form__forgot-password"> <a href="">Forgot you password?</a> </div>
+
+    <button type="button" class="btn btn-outline-success auth-form__submit auth-form__login-submit" onclick="submitLogin()">Log In</button>
+
+    <div class="auth-form__socials">
+      <p class="auth-form__socials-label"> Or connect with:</p>
+      <div class="socials">
+        <a href="#" class="fa fa-facebook socials__item socials__item-facebook"></a>
+        <a href="#" class="fa fa-twitter socials__item socials__item-twitter"></a>
+        <a href="#" class="fa fa-google socials__item socials__item-google"></a>
+        <a href="#" class="fa fa-linkedin socials__item socials__item-linkedin"></a>
+      </div>
+    </div>
+    <p class="auth-form__terms-and-privacy">By signing up, you agree to our <a target="_blank" href="">Terms of Service</a> and <a target="_blank" href="">Privacy Policy</a>.</p>
+  </form>
+
+
+  <!-- Sign Up form -->
+
+  <form class="auth-form auth-form_hidden" id="signup-tab">
+    <div class="form-group email-form auth-form__field">
+      <input type="email" class="form-control auth-form__input auth-form__username-input" aria-describedby="emailHelp" placeholder="First and Last name">
+      <p class="auth-form__field-hint">This will be your username. Use between 3 - 25 characters (a-z,A-Z,0-9)</p>
+    </div>
+
+    <div class="form-group email-form auth-form__field">
+      <input type="email" class="form-control auth-form__input auth-form__email-input" aria-describedby="emailHelp" placeholder="Email">
+      <p class="auth-form__field-hint">Use correct email.</p>
+    </div>
+
+    <div class="form-group password-form auth-form__field">
+      <input type="password" class="form-control auth-form__input auth-form__password-input" placeholder="Password">
+      <p class="auth-form__field-hint">Use at least 6 characters (a-z,A-Z,0-9)</p>
+    </div>
+
+    <button type="button" class="btn btn-outline-success auth-form__submit auth-form__signup-submit" onclick="submitSignup()">Create An Account</button>
+
+    <div class="auth-form__socials">
+      <p class="auth-form__socials-label"> Or connect with:</p>
+      <div class="socials">
+        <a href="#" class="fa fa-facebook socials__item socials__item-facebook"></a>
+        <a href="#" class="fa fa-twitter socials__item socials__item-twitter"></a>
+        <a href="#" class="fa fa-google socials__item socials__item-google"></a>
+        <a href="#" class="fa fa-linkedin socials__item socials__item-linkedin"></a>
+      </div>
+    </div>
+    <p class="auth-form__terms-and-privacy">By signing up, you agree to our <a target="_blank" href="">Terms of Service</a> and <a target="_blank" href="">Privacy Policy</a>.</p>
+  </form>
+}
+
+#embed("base")
