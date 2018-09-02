@@ -1,7 +1,7 @@
 
 #set("stylesheets") {
-	<link rel="stylesheet" type="text/css" href="styles/login.css">
-  <script src="/scripts/login.js"></script>
+  <link rel="stylesheet" type="text/css" href="/Styles/login.css">
+  <script src="/Scripts/login.js"></script>
 }
 
 #set("content") {
