@@ -36,7 +36,7 @@ final class UserTests: XCTestCase {
         let user = User(name: expectedUserName, email: expectedUserEmail, password: expectedUserPassword)
         let receivedUser = try app.getResponse(to: usersURI, method: .POST, headers: ["Content-Type": "application/json"], data: user, decodeTo: User.self)
 
-        XCTAssertEqual(receivedUser.name, expectedUserName)
+        XCTAssertEqual(receivedUser.username, expectedUserName)
         XCTAssertEqual(receivedUser.email, expectedUserEmail)
         XCTAssertEqual(receivedUser.password, expectedUserPassword)
         XCTAssertNotNil(receivedUser.id)
@@ -44,7 +44,7 @@ final class UserTests: XCTestCase {
         let users = try app.getResponse(to: usersURI, decodeTo: [User].self)
 
         XCTAssertEqual(users.count, 1)
-        XCTAssertEqual(users.first?.name, expectedUserName)
+        XCTAssertEqual(users.first?.username, expectedUserName)
         XCTAssertEqual(users.first?.email, expectedUserEmail)
         XCTAssertEqual(users.first?.password, expectedUserPassword)
         XCTAssertEqual(users.first?.id, receivedUser.id)
@@ -69,7 +69,7 @@ final class UserTests: XCTestCase {
         let user = User(name: expectedUserName, email: expectedUserEmail, password: expectedUserPassword)
         let receivedUser = try app.getResponse(to: usersURI, method: .POST, headers: ["Content-Type": "application/json"], data: user, decodeTo: User.self)
 
-        XCTAssertEqual(receivedUser.name, expectedUserName)
+        XCTAssertEqual(receivedUser.username, expectedUserName)
         XCTAssertEqual(receivedUser.email, expectedUserEmail)
         XCTAssertEqual(receivedUser.password, expectedUserPassword)
         XCTAssertNotNil(receivedUser.id)
@@ -82,7 +82,7 @@ final class UserTests: XCTestCase {
 
         let receivedUpdatedUser = try app.getResponse(to: "\(usersURI)\(receivedUser.id!)", method: .PUT, headers: ["Content-Type": "application/json"], data: userForUpdate, decodeTo: User.self)
 
-        XCTAssertEqual(receivedUpdatedUser.name, expectedUpdatedUserName)
+        XCTAssertEqual(receivedUpdatedUser.username, expectedUpdatedUserName)
         XCTAssertEqual(receivedUpdatedUser.email, expectedUpdatedUserEmail)
         XCTAssertEqual(receivedUpdatedUser.password, expectedUpdatedUserPassword)
         XCTAssertNotNil(receivedUpdatedUser.id)
@@ -92,7 +92,7 @@ final class UserTests: XCTestCase {
         let user = try User.create(name: expectedUserName, email: expectedUserEmail, password: expectedUserPassword, on: connection)
         let receivedUser = try app.getResponse(to: "\(usersURI)\(user.id!)", decodeTo: User.self)
 
-        XCTAssertEqual(receivedUser.name, expectedUserName)
+        XCTAssertEqual(receivedUser.username, expectedUserName)
         XCTAssertEqual(receivedUser.email, expectedUserEmail)
         XCTAssertEqual(receivedUser.password, expectedUserPassword)
         XCTAssertEqual(receivedUser.id, user.id)
@@ -105,7 +105,7 @@ final class UserTests: XCTestCase {
         let users = try app.getResponse(to: usersURI, decodeTo: [User].self)
 
         XCTAssertEqual(users.count, 2)
-        XCTAssertEqual(users.first?.name, expectedUserName)
+        XCTAssertEqual(users.first?.username, expectedUserName)
         XCTAssertEqual(users.first?.email, expectedUserEmail)
         XCTAssertEqual(users.first?.password, expectedUserPassword)
         XCTAssertEqual(users.first?.id, user.id)

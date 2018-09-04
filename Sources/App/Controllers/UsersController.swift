@@ -6,6 +6,7 @@
 //
 
 import Vapor
+import Crypto
 
 class UsersController: RouteCollection {
 
@@ -19,24 +20,25 @@ class UsersController: RouteCollection {
         usersGroup.delete(User.parameter, use: deleteHandler)
     }
 
-    func getAllHandler(request: Request) throws -> Future<[User]> {
-        return User.query(on: request).all()
+    func getAllHandler(request: Request) throws -> Future<[User.Public]> {
+        return User.query(on: request).decode(User.Public.self).all()
     }
 
-    func createHandler(request: Request, user: User) throws -> Future<User> {
-        return user.save(on: request)
+    func createHandler(request: Request, user: User) throws -> Future<User.Public> {
+        user.password = try BCrypt.hash(user.password)
+        return user.save(on: request).convertToPublic()
     }
 
-    func getHandler(request: Request) throws -> Future<User> {
-        return try request.parameters.next(User.self)
+    func getHandler(request: Request) throws -> Future<User.Public> {
+        return try request.parameters.next(User.self).convertToPublic()
     }
 
-    func updateHandler(request: Request) throws -> Future<User> {
-        return try flatMap(to: User.self, request.parameters.next(User.self), request.content.decode(User.self), { (user, updatedUser) in
-            user.name = updatedUser.name
+    func updateHandler(request: Request) throws -> Future<User.Public> {
+        return try flatMap(to: User.Public.self, request.parameters.next(User.self), request.content.decode(User.self), { (user, updatedUser) in
+            user.username = updatedUser.username
             user.email = updatedUser.email
             user.password = updatedUser.password
-            return user.save(on: request)
+            return user.save(on: request).convertToPublic()
         })
     }
 
