@@ -1,6 +1,7 @@
 
 #set("stylesheets") {
   <link rel="stylesheet" type="text/css" href="/Styles/login.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/Scripts/login.js"></script>
 }
 
@@ -23,7 +24,7 @@
 
   <!-- Login form -->
 
-  <form class="auth-form" id="login-tab">
+  <form class="auth-form auth-form_selected" id="login-tab">
     <div class="form-group email-form auth-form__field auth-form__username">
       <input type="email" class="form-control auth-form__input auth-form__username-input" aria-describedby="emailHelp" placeholder="Username or email">
     </div>
@@ -55,7 +56,7 @@
 
   <!-- Sign Up form -->
 
-  <form class="auth-form auth-form_hidden" id="signup-tab">
+  <form class="auth-form" id="signup-tab">
     <div class="form-group email-form auth-form__field">
       <input type="email" class="form-control auth-form__input auth-form__username-input" aria-describedby="emailHelp" placeholder="First and Last name">
       <p class="auth-form__field-hint">This will be your username. Use between 3 - 25 characters (a-z,A-Z,0-9)</p>

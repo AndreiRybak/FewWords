@@ -63,6 +63,10 @@ extension User: BasicAuthenticatable {
     static let passwordKey: PasswordKey = \User.password
 }
 
+extension User: TokenAuthenticatable {
+    typealias TokenType = Token
+}
+
 extension User: PostgreSQLUUIDModel {}
 extension User: Content {}
 extension User: Parameter {}

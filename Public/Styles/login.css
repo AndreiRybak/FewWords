@@ -76,6 +76,8 @@
   .auth-form {
     background-color: white;
 
+    display: none;
+
     width: 100%;
     max-width: 500px;
     min-width: 100px;
@@ -92,8 +94,8 @@
     border-bottom-right-radius: 5px;
   }
 
-  .auth-form_hidden {
-    display: none;
+  .auth-form_selected {
+    display: block;
   }
 
   .auth-form__field {

@@ -1,0 +1,10 @@
+
+#set("stylesheets") {
+
+}
+
+#set("content") {
+	<h1>Main page</h1>
+}
+
+#embed("base")
