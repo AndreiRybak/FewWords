@@ -1,0 +1,39 @@
+
+#set("stylesheets") {
+	<link rel="stylesheet" type="text/css" href="/Styles/pageHeader.css">
+
+	#get(stylesheets)
+}
+
+#set("content") {
+	<div class="page-header">
+		<div class="page-header-elements">
+			<div class="page-header-elements__logo">
+				<a href="https://www.google.com"><img class="page-header__image" src="Images/logo.png"></a>
+			</div>
+			<nav class="page-header-elements__navigation">
+				<div class="page-header-elements__navigation-primary-container">
+					<ul class="navigation-primary-container__menu">
+						<li class="navigation-primary-container__menu-item navigation-primary-container__menu-item-font">
+							<a class="navigation-primary-container__menu-item-font" href="https://www.google.com">Home</a>
+						</li>
+						<li class="navigation-primary-container__menu-item navigation-primary-container__menu-item-font">
+							<a class="navigation-primary-container__menu-item-font" href="https://www.google.com">Posts</a>
+						</li>
+						<li class="navigation-primary-container__menu-item navigation-primary-container__menu-item-font">
+							<a class="navigation-primary-container__menu-item-font" href="https://www.google.com">Users</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div class="page-header-elements__right-elements">	
+				<button type="button" class="btn btn-outline-success" onclick="">Login/Signup</button>
+			</div>
+		</div>
+		
+	</div>
+
+	#get(content)
+}
+
+#embed("base")

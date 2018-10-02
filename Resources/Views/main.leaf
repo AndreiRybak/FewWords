@@ -1,10 +1,24 @@
 
 #set("stylesheets") {
-
+	
 }
 
 #set("content") {
-	<h1>Main page</h1>
+	<h1 style="margin-top: 100px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
+	<h1 style="margin-top: 50px">Main page</h1>
 }
 
-#embed("base")
+#embed("baseWithHeader")
